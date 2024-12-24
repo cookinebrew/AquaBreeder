@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Penyakit Ikan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-fish"></i>
+                <span>AquaBreeder Expert</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Beranda</a></li>
+                <li><a href="#diseases">Penyakit</a></li>
+                <li><a href="#about">Tentang</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="home" class="section active">
+            <h1>Sistem Pakar Diagnosa Penyakit Ikan Pembenih</h1>
+            <div class="card">
+                <div id="diagnosis-container">
+                    <div id="initial-symptoms" class="diagnosis-step active">
+                        <h3><i class="fas fa-clipboard-list"></i> Pilih gejala awal yang terlihat:</h3>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="gejalaSearch" placeholder="Cari gejala..." onkeyup="searchGejala()">
+                        </div>
+                        <div id="initialGejalaList">
+                            <!-- Gejala akan di-generate melalui JavaScript -->
+                        </div>
+                        <button onclick="startDiagnosis()"><i class="fas fa-play"></i> Mulai Diagnosa</button>
+                    </div>
+
+                    <div id="follow-up-questions" class="diagnosis-step">
+                        <div class="diagnosis-history">
+                            <h4><i class="fas fa-history"></i> Riwayat Jawaban:</h4>
+                            <div id="answeredQuestions">
+                                <!-- Riwayat jawaban akan ditampilkan di sini -->
+                            </div>
+                        </div>
+                        
+                        <div class="current-question">
+                            <h3><i class="fas fa-question-circle"></i> <span id="current-question"></span></h3>
+                            <div class="button-group">
+                                <button onclick="answerQuestion(true)" class="yes-btn"><i class="fas fa-check"></i> Ya</button>
+                                <button onclick="answerQuestion(false)" class="no-btn"><i class="fas fa-times"></i> Tidak</button>
+                            </div>
+                        </div>
+                        
+                        <div class="navigation-buttons">
+                            <button onclick="goBack()" class="back-btn"><i class="fas fa-arrow-left"></i> Kembali</button>
+                            <button onclick="restartDiagnosis()" class="restart-btn"><i class="fas fa-redo"></i> Mulai Ulang</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="result" class="result card">
+                <h2><i class="fas fa-clipboard-check"></i> Hasil Diagnosa</h2>
+                <p id="diagnosis"></p>
+                <h3><i class="fas fa-medkit"></i> Pencegahan dan Pengobatan:</h3>
+                <p id="treatment"></p>
+            </div>
+        </section>
+
+        <section id="diseases" class="section">
+            <h1>Data Penyakit Ikan</h1>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="diseaseSearch" placeholder="Cari penyakit..." onkeyup="searchDiseases()">
+            </div>
+            <div id="diseases-list" class="diseases-container">
+                <!-- Daftar penyakit akan di-generate melalui JavaScript -->
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h1>Tentang AquaBreeder Expert</h1>
+            <div class="card">
+                <div class="about-content">
+                    <div class="about-image">
+                        <i class="fas fa-fish fa-5x"></i>
+                    </div>
+                    <div class="about-text">
+                        <h2>Apa itu AquaBreeder Expert?</h2>
+                        <p>AquaBreeder Expert adalah sistem pakar yang dirancang khusus untuk membantu para pembudidaya dan pembenih ikan dalam mendiagnosa penyakit pada ikan. Sistem ini menggunakan metode pencocokan gejala untuk mengidentifikasi kemungkinan penyakit yang menyerang ikan di kolam pembibitan Anda.</p>
+                        
+                        <h3>Fitur Utama:</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Diagnosa cepat dan akurat untuk ikan pembibitan</li>
+                            <li><i class="fas fa-check-circle"></i> Database penyakit khusus ikan pembenih</li>
+                            <li><i class="fas fa-check-circle"></i> Saran pencegahan dan pengobatan yang tepat</li>
+                            <li><i class="fas fa-check-circle"></i> Mudah digunakan oleh pembudidaya</li>
+                        </ul>
+
+                        <h3>Panduan Penggunaan:</h3>
+                        <ol>
+                            <li>Amati gejala yang terlihat pada ikan di kolam pembibitan</li>
+                            <li>Pilih gejala yang sesuai dari daftar</li>
+                            <li>Jawab pertanyaan lanjutan dengan Ya/Tidak</li>
+                            <li>Dapatkan hasil diagnosa dan rekomendasi penanganan</li>
+                        </ol>
+
+                        <h3><i class="fas fa-map-marker-alt"></i> Lokasi Studi Kasus:</h3>
+                        <p>Sistem ini dikembangkan berdasarkan studi kasus di <strong>Balai Benih Ikan (BBI) Kertek Wonosobo</strong>, sebuah pusat pembibitan ikan yang berlokasi di Jawa Tengah.</p>
+                        
+                        <div class="maps-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.575047037491!2d109.94939631477567!3d-7.398666894645446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a9f56432a44a3%3A0x309af8bfcb6d1790!2sBalai%20Benih%20Ikan%20Kertek%20Wonosobo!5e0!3m2!1sen!2sid!4v1624512345678!5m2!1sen!2sid"
+                                width="100%" 
+                                height="450" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>&copy; 2024 AquaBreeder Expert - Sistem Pakar Diagnosa Penyakit Ikan Pembenih</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/cookinebrew" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
